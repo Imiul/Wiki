@@ -1,0 +1,13 @@
+<IfModule mod_rewrite.c>
+
+    Options -Multiviews
+    RewriteEngine On
+    RewriteBase /Wiki/public
+
+    # Accept Loading Of Actual Files (-f) And Directories (-d)
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+
+    # Redirect Everythings Else To Index Page
+    RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
+</IfModule>
