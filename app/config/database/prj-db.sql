@@ -1,5 +1,5 @@
-CREATE DATABASE IF NOT EXISTS wiki;
-USE wiki;
+CREATE DATABASE IF NOT EXISTS Wikis;
+USE Wikis;
 
 
 -- Role Table 

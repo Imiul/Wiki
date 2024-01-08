@@ -11,8 +11,9 @@
         public $role;
         public $addDate;
         public $lastLoginDate;
+        public $picture;
 
-        public function __construct($userId, $firstName, $lastName, $username, $email, $password, $role, $addDate, $lastLoginDate)
+        public function __construct($userId, $firstName, $lastName, $username, $email, $password, $role, $addDate, $lastLoginDate, $picture)
         {
             $this->userId = $userId;
             $this->firstName = $firstName;
@@ -23,6 +24,7 @@
             $this->role = $role;
             $this->addDate = $addDate;
             $this->lastLoginDate = $lastLoginDate;
+            $this->picture = $picture;
         }
 
         /* Getters Only */ 
@@ -69,6 +71,11 @@
         public function getLastLoginDate()
         {
             return $this->lastLoginDate;
+        }
+
+        public function getPicture()
+        {
+            return $this->picture;
         }
 
     }

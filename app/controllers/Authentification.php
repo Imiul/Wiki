@@ -5,6 +5,40 @@
         /* Login Page ======  */ 
         public function login()
         {
+            if (isset($_POST['login'])) {
+
+                $email = $_POST['email'];
+                $password = $_POST['password'];
+
+                $db = new Database();
+                $userService = new User_Service($db);
+
+                $userData = $userService->login($email, $password);
+
+                $_SESSION['UserInfo'] = [
+                    "id" => $userData['UserId'],
+                    "username" => $userData['username'],
+                    "firstName" => $userData['firstName'],
+                    "lastName" => $userData['lastName'],
+                    "role" => $userData['role']
+                ];
+
+                $userService->updateLASTLoginDate($_SESSION['UserInfo']['id']);
+
+                switch ($_SESSION['UserInfo']['role']) {
+                    case "User":
+                        header("Location: /Wiki/Admin/notFound");
+                        die();
+                        break;
+                    case "Admin":
+                        header("Location: /Wiki/Users/notFound");
+                        die();
+                        break;
+                    default:
+                        echo "REDIRECTION NOT WORKING !!";
+                        break;
+                }
+            }
 
             /* Load A View */ 
             $data = ["pageTitle" => "Login Page"];
@@ -13,13 +47,59 @@
 
 
         /* Register Page ======  */ 
-        public function register()
+        public function Register()
         {
-            
+            /* Register Condition */ 
+            if (isset($_POST['register'])) {
+
+                $userId = uniqid(mt_rand(), true);
+                $firstName = ucfirst($_POST['firstName']);
+                $lastName = ucfirst($_POST['lastName']);
+                $username = $firstName ."-". $lastName ."-". time();
+                $email = $_POST['email'];
+                $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+                $role = "User";
+                $addDate = Date("Y-m-d H:i:s");
+                $lastLoginDate = Date("Y-m-d H:i:s");
+                
+                
+                /* handel image */
+                $picture = $_FILES["picture"]["name"];
+                $newPictureName = "img-" . time() . "-" . $_FILES["picture"]["name"];
+                $newPath = __DIR__."/../uploads/users/" . $newPictureName;
+                $tmpFile = $_FILES["picture"]["tmp_name"];
+
+                try {
+                    // Move the uploaded file to the specified destination
+                    move_uploaded_file($tmpFile, $newPath);
+                } catch (PDOException $e) {
+                    echo "ERROR UPLOADING IMAGE TO SERVER !! "  . $e->getMessage();
+                    die();
+                }
+
+                $user = new User($userId, $firstName, $lastName, $username, $email, $password, $role, $addDate, $lastLoginDate, $picture);
+                $db = new Database();
+                $userService = new User_Service($db);
+
+                $userService->register($user);
+
+                $_SESSION['UserInfo'] = [
+                    "id" => $userId,
+                    "username" => $username,
+                    "firstName" => $firstName,
+                    "lastName" => $lastName,
+                    "role" => $role
+                ];
+                
+                // header("Location: /wiki/Users/notFound");
+                // die();
+            }
+
             /* Load A View */ 
             $data = ["pageTitle" => "Register Page"];
             $this->loadView("auth/register", $data);
         }
+
 
 
         /* Error Page ======== */ 

@@ -24,10 +24,11 @@
             $role = $user->getRole();
             $addDate = $user->getAddDate();
             $lastLoginDate = $user->getLastLoginDate();
+            $picture = $user->getPicture();
 
             $sql = "
-                INSERT INTO users (UserId, firstName, lastName, username, email, password, role, addDate, lastLoginDate)
-                VALUES (:id, :firstName, :lastName, :username, :email, :password, :role, :addDate, :lastLoginDate)
+                INSERT INTO users (UserId, firstName, lastName, username, email, password, role, addDate, lastLoginDate, picture)
+                VALUES (:id, :firstName, :lastName, :username, :email, :password, :role, :addDate, :lastLoginDate, :picture)
             ";
 
             try {
@@ -43,6 +44,7 @@
                 $stmt->bindParam(':role', $role);
                 $stmt->bindParam(':addDate', $addDate);
                 $stmt->bindParam(':lastLoginDate', $lastLoginDate);
+                $stmt->bindParam(':picture', $picture);
 
                 $stmt->execute();
                 return true;
@@ -92,7 +94,7 @@
             $pdo = $this->db->connect();
 
             /* Update Last Login Date */ 
-            $newDate = Date("Y-m-s H:i:s");
+            $newDate = Date("Y-m-d H:i:s");
             $sql = "
                 UPDATE users 
                 SET lastLoginDate = :date

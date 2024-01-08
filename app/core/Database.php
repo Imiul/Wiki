@@ -6,7 +6,7 @@
         private $dbconnection;
         private static $pdo;
         
-        private const DSN = "mysql:host=localhost;port=3306;dbname=wiki;charset=utf8";
+        private const DSN = "mysql:host=localhost;port=3306;dbname=Wikis;charset=utf8";
         private const USERNAME = "root";
         private const PASSWORD = "root";
 
