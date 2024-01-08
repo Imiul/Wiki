@@ -18,6 +18,7 @@ CREATE TABLE users (
     role VARCHAR(50) NOT NULL,
     addDate DATETIME NOT NULL,
     lastLoginDate DATETIME NOT NULL,
+    picture VARCHAR(255) NOT NULL,
     FOREIGN KEY (role) REFERENCES role(roleName) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
