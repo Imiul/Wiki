@@ -7,12 +7,12 @@
 
         <!-- Login Form -->
         <form 
-            action="/wiki/Authentification/login" method="POST" 
+            method="POST" 
             class="w-[40vw] bg-[#eaf4f4] py-[4%] px-[2.5%] rounded border-2 border-[#415a77] flex flex-col space-y-[5px] justify-center" 
             />
 
             <div class="flex items-center mb-4">
-                <a href="/wiki/Pages/home"><img src="<?= UrlRoot. "/img/logo/Wiki.png" ?>" alt="Wiki Logo" width="120px" ></a>
+                <a href="/Wiki/Pages/home"><img src="<?= UrlRoot. "/img/logo/Wiki.png" ?>" alt="Wiki Logo" width="120px" ></a>
                 <h1 class="ml-4 mt-2">/ Login </h1>
             </div>
             
