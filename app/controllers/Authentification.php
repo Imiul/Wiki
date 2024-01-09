@@ -77,7 +77,7 @@
                     die();
                 }
 
-                $user = new User($userId, $firstName, $lastName, $username, $email, $password, $role, $addDate, $lastLoginDate, $picture);
+                $user = new User($userId, $firstName, $lastName, $username, $email, $password, $role, $addDate, $lastLoginDate, $newPictureName);
                 $db = new Database();
                 $userService = new User_Service($db);
 
@@ -99,7 +99,6 @@
             $data = ["pageTitle" => "Register Page"];
             $this->loadView("auth/register", $data);
         }
-
 
 
         /* Error Page ======== */ 

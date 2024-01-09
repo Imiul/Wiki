@@ -8,11 +8,11 @@
         <!-- Login Form -->
         <form 
             method="POST" 
-            class="w-[40vw] bg-[#eaf4f4] py-[4%] px-[2.5%] rounded border-2 border-[#415a77] flex flex-col space-y-[5px] justify-center" 
+            class="w-[90vw] md:w-[70vw] lg:w-[40vw] bg-[#eaf4f4] py-[8%] lg:py-[4%] md:px-[2.5%] px-[4%] md:px-[2.5%] rounded border-2 border-[#415a77] flex flex-col space-y-[5px] justify-center" 
             />
 
             <div class="flex items-center mb-4">
-                <a href="/Wiki/Pages/home"><img src="<?= UrlRoot. "/img/logo/Wiki.png" ?>" alt="Wiki Logo" width="120px" ></a>
+                <a href="/Wiki/Pages/home"><img src="<?= UrlRoot. "/img/logo/Wiki.png" ?>" alt="Wiki Logo" width="90px" class="md:w-[120px]" ></a>
                 <h1 class="ml-4 mt-2">/ Login </h1>
             </div>
             

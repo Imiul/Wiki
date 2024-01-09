@@ -8,21 +8,21 @@
         <!-- Login Form -->
         <form 
             method="POST" enctype="multipart/form-data"
-            class="w-[40vw] bg-[#eaf4f4] py-[4%] px-[2.5%] rounded border-2 border-[#415a77] flex flex-col space-y-2 justify-center" 
+            class="w-[90vw] md:w-[70vw] lg:w-[60vw] bg-[#eaf4f4] py-[8%] lg:py-[4%] md:px-[2.5%] px-[4%] md:px-[2.5%] rounded border-2 border-[#415a77] flex flex-col space-y-2 justify-center" 
             />
             
             <div class="flex items-center mb-4">
-                <a href="/Wiki/Pages/home"><img src="<?= UrlRoot. "/img/logo/Wiki.png" ?>" alt="Wiki Logo" width="120px" ></a>
+                <a href="/Wiki/Pages/home"><img src="<?= UrlRoot. "/img/logo/Wiki.png" ?>" alt="Wiki Logo" width="90px" class="md:w-[120px]" ></a>
                 <h1 class="ml-4 mt-2">/ Register Now </h1>
             </div>
 
-            <div class="flex justify-between h-auto" >
+            <div class="flex flex-col lg:flex-row lg:justify-between h-auto" >
                 <!-- First Name INput -->
-                <div class="flex flex-col space-y-2"><input type="text" name="firstName" placeholder="First Name" class="px-[20px] border-2 border-[#415a77] rounded h-[40px] placeholder:text-[#415a77] outline-none" />
+                <div class="flex flex-col space-y-2 w-[100%] lg:w-[45%] relative"><input type="text" name="firstName" placeholder="First Name" class="w-[100%] px-[20px] border-2 border-[#415a77] rounded h-[40px] placeholder:text-[#415a77] outline-none" />
                 <span class="firstNameInput w-full bg-red-500 text-white rounded px-[20px]"></span></div>
                 
                 <!-- Last Name INput -->
-                <div class="flex flex-col space-y-2"><input type="text" name="lastName" placeholder="Last Name" class="px-[20px] border-2 border-[#415a77] rounded h-[40px] placeholder:text-[#415a77] outline-none" />
+                <div class="flex flex-col space-y-2 w-[100%] lg:w-[45%] relative"><input type="text" name="lastName" placeholder="Last Name" class="w-[100%] px-[20px] px-[20px] border-2 border-[#415a77] rounded h-[40px] placeholder:text-[#415a77] outline-none" />
                 <span class="lastNameInput w-full bg-red-500 text-white rounded px-[20px]"></span></div>
 
             </div>
