@@ -15,28 +15,33 @@
 
                 $userData = $userService->login($email, $password);
 
-                $_SESSION['UserInfo'] = [
-                    "id" => $userData['UserId'],
-                    "username" => $userData['username'],
-                    "firstName" => $userData['firstName'],
-                    "lastName" => $userData['lastName'],
-                    "role" => $userData['role']
-                ];
 
-                $userService->updateLASTLoginDate($_SESSION['UserInfo']['id']);
+                if ($userData['success']) {
 
-                switch ($_SESSION['UserInfo']['role']) {
-                    case "User":
-                        header("Location: /Wiki/Admin/notFound");
-                        die();
-                        break;
-                    case "Admin":
-                        header("Location: /Wiki/Users/notFound");
-                        die();
-                        break;
-                    default:
-                        echo "REDIRECTION NOT WORKING !!";
-                        break;
+                    $_SESSION['UserInfo'] = [
+                        "id" => $userData['data']['UserId'],
+                        "username" => $userData['data']['username'],
+                        "firstName" => $userData['data']['firstName'],
+                        "lastName" => $userData['data']['lastName'],
+                        "role" => $userData['data']['role']
+                    ];
+    
+                    $userService->updateLASTLoginDate($_SESSION['UserInfo']['id']);
+    
+                    switch ($_SESSION['UserInfo']['role']) {
+                        case "User":
+                            header("Location: /Wiki/User/notFound");
+                            die();
+                            break;
+                        case "Admin":
+                            header("Location: /Wiki/Admin/notFound");
+                            die();
+                            break;
+                        default:
+                            echo "REDIRECTION NOT WORKING !!";
+                            break;
+                    }
+
                 }
             }
 

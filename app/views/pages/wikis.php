@@ -32,7 +32,6 @@
                 <div class="flex items-center justify-center flex-col flex-wrap gap-x-[20px] gap-y-[10px] mt-[30px] md:flex-row" >
 
                     <?php
-
                         if ($data['WikisData']) {
 
                             foreach($data['WikisData'] as $wiki) {
@@ -46,13 +45,11 @@
                                 echo "</div>";
                                 echo "</div>";
                             }
-
                         } else {
                             echo "<div class='mt-4' >";
                             echo "<span class='border-2 border-[#000] py-[10px] rounded px-[10vw] bg-gray-200' >There Is Not Wikis ! We're Sorry</span>";
                             echo "</div>";
                         }
-
                     ?>
                 </div>
 

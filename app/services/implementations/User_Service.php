@@ -74,18 +74,18 @@
                 if ($UserData) {
                     /* Verify Password */ 
                     if (password_verify($password, $UserData['password'])) {
-                        return $UserData;
+                        return ['success' => true, 'data' => $UserData];
 
-                    } else {return false;}
+                    } else {return ['success' => false, 'data' => null];}
                 } else {
-                    return false;
+                    return ['success' => false, 'data' => null];
                 }
 
             } catch (PDOException $e) {
                 echo "ERROR LOGIN USER !!!" . $e->getMessage();
-                return false;
             }
         }
+
 
         /* Update Last Loging Date */ 
         public function updateLASTLoginDate($userId)
