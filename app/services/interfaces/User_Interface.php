@@ -11,6 +11,11 @@
         public function updateLASTLoginDate($userId);   
         
         public function getUserInformation($id);
+
+        public function deleteUserById($id);
+
+        public function updateProfile($firstName, $lastName, $email, $id);
+        public function updatePassword($password, $id);
     }
 
     ?>

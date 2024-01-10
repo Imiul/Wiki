@@ -146,7 +146,59 @@
             return $UserWikis;
         }
 
+        /* DELETE USER BY ID */
+        public function deleteUserById($id)
+        {
+            $sql = "DELETE FROM users WHERE UserId = :id";
 
+            $pdo = $this->db->connect();
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindParam(":id", $id);
+            $stmt->execute();
+            
+        }
+
+
+        /* UPDATE USER PROFILE */ 
+        public function updateProfile($firstName, $lastName, $email, $id)
+        {
+            $sql = "
+                UPDATE users
+                SET firstName = :firstName, lastName = :lastName, username = :username, email = :email
+                WHERE UserId = :id
+            ";
+
+            $username = $firstName . "-" . $lastName . "-" . time();
+
+            $pdo = $this->db->connect();
+            $stmt = $pdo->prepare($sql);
+
+            $stmt->bindParam(":firstName", $firstName);
+            $stmt->bindParam(":lastName", $lastName);
+            $stmt->bindParam(":username", $username); // Assuming you want to update the username as well
+            $stmt->bindParam(":email", $email);
+
+            $stmt->bindParam(":id", $id);
+            $stmt->execute();
+        }
+
+
+        public function updatePassword($password, $id)
+        {
+            $sql = "
+                UPDATE users
+                SET password = :password
+                WHERE UserId = :id
+            ";
+
+            $pdo = $this->db->connect();
+            $stmt = $pdo->prepare($sql);
+
+            $stmt->bindParam(":password", $password);
+            $stmt->bindParam(":id", $id);
+
+            $stmt->execute();
+        }
 
     }
 
