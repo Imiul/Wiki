@@ -9,7 +9,7 @@
     
     <!-- Article --> 
     <section>
-        <div class="w-[90%] mx-auto mt-[60px]" >
+        <div class="w-[90%] mx-auto mt-[60px] mb-[90px]" >
                 
                 <!-- Section Title -->
                 <div class="text-center">
@@ -40,7 +40,7 @@
                                 echo "<div class='mt-[10px] flex flex-col items-center'  >";
                                 echo "<h1 class='font-[500] text-[18px]' >". $wiki['title'] ."</h1>";
                                 echo "<span class='text-sm text-center'>";
-                                echo "<a href='wikiDetails?category=". $wiki['wikiId'] ."'>View Wiki Details & Information</a>";
+                                echo "<a href='/Wiki/Pages/wikiDetails?wikiId=". $wiki['wikiId'] ."'>View Wiki Details & Information</a>";
                                 echo "</span>";
                                 echo "</div>";
                                 echo "</div>";
@@ -52,7 +52,6 @@
                         }
                     ?>
                 </div>
-
         </div>
     </section>
 

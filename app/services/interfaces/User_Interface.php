@@ -8,7 +8,9 @@
 
         /* Both */ 
         public function login($email, $password);
-        public function updateLASTLoginDate($userId);        
+        public function updateLASTLoginDate($userId);   
+        
+        public function getUserInformation($id);
     }
 
     ?>

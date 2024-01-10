@@ -11,6 +11,7 @@
         
         public function getWikisByName($name);
         
+        public function deleteWikiById($id);
     }
 
     ?>

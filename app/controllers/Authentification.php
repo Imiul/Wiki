@@ -30,11 +30,11 @@
     
                     switch ($_SESSION['UserInfo']['role']) {
                         case "User":
-                            header("Location: /Wiki/User/notFound");
+                            header("Location: /Wiki/Users/wikis");
                             die();
                             break;
                         case "Admin":
-                            header("Location: /Wiki/Admin/notFound");
+                            header("Location: /Wiki/Admin/dashboard");
                             die();
                             break;
                         default:

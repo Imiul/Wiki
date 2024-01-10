@@ -86,7 +86,6 @@
             }
         }
 
-
         /* Update Last Loging Date */ 
         public function updateLASTLoginDate($userId)
         {
@@ -105,6 +104,49 @@
             $stmt->bindParam(":id", $userId);
             $stmt->execute();
         }
+
+
+
+
+
+        /* Get User Information */ 
+        public function getUserInformation($id)
+        {
+            $pdo = $this->db->connect();
+
+            $sql = "
+                SELECT *
+                FROM users
+                WHERE UserId = :id
+            ";
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindParam(":id", $id);
+            $stmt->execute();
+
+            $userInfo = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $userInfo;
+        }
+
+
+        /* Get User Information */ 
+        public function getUserWikis($id)
+        {
+            $pdo = $this->db->connect();
+
+            $sql = "
+                SELECT *
+                FROM wikis
+                WHERE addedBy = :id
+            ";
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindParam(":id", $id);
+            $stmt->execute();
+
+            $UserWikis = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $UserWikis;
+        }
+
+
 
     }
 

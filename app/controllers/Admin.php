@@ -17,7 +17,9 @@
         {
 
             /* Load A View */ 
-            $data = ["pageTitle" => "Users Page"];
+            $data = [
+                "pageTitle" => "Users Page"
+            ];
             $this->loadView("admin/users", $data);
         }
 
@@ -27,8 +29,11 @@
         {
 
             /* Load A View */ 
-            $data = ["pageTitle" => "Categories Page"];
-            $this->loadView("admin/categories", $data);
+            $data = [
+                "pageTitle" => "Categories Page",
+                "specialName" => "Categories"
+            ];
+                $this->loadView("admin/categories", $data);
         }
 
 

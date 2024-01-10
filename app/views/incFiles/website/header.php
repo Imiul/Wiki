@@ -18,7 +18,7 @@
                     </button>
                 </div>
 
-                <ul class="fixed left-[-100%] top-0 w-[60%] lg:w-[30%] bg-[#28427B] h-[100vh] px-[50px] py-[4%]" id="menu" >
+                <ul class="fixed left-[-100%] top-0 w-[60%] lg:w-[30%] bg-[#28427B] h-[100vh] px-[50px] py-[4%]" id="menu" style="transition-duration: 1s;" >
                     <li class="mb-4"><a href="home" class="text-white font-[500] text-xl lg:text-2xl">Home</a></li>
                     <li class="mb-4"><a href="categories" class="text-white font-[500] text-xl lg:text-2xl">Categories</a></li>
                     <li class="mb-4"><a href="wikis" class="text-white font-[500] text-xl lg:text-2xl">Wikis</a></li>

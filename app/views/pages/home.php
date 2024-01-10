@@ -20,13 +20,14 @@
 
                 <!-- Buttons -->
                 <div class="mt-8 lg:mt-4" >
-                    <a href="wikis" class="bg-[#28427B] border-2 border-[#28427B] hover:bg-[#28427B]/80 focus:bg-[#404E6C] py-[8px] px-[8px] lg:py-[8px] lg:px-[20px] rounded text-white">Start Exploring Wikis Today</a>
+                    <a href="/Wiki/Pages/wikis" class="bg-[#28427B] border-2 border-[#28427B] hover:bg-[#28427B]/80 focus:bg-[#404E6C] py-[8px] px-[8px] lg:py-[8px] lg:px-[20px] rounded text-white">Start Exploring Wikis Today</a>
                     <a href="/Wiki/Authentification/register" class="border-2 border-[#28427B] hover:bg-[#28427B]/80 hover:text-white focus:bg-[#404E6C] py-[8px] px-[8px] lg:py-[8px] lg:px-[20px] rounded text-[#28427B]">Join Us Today</a>
                 </div>
             </div>
         </div>
     </section>
 
+    
     <!-- Categories -->
     <section class="mt-[120px]" >
         <div class="w-[90%] mx-auto mt-[50px]" >
@@ -43,7 +44,7 @@
                         echo "<div class='ml-[20px]'>";
                         echo "<h1 class='font-[500] text-[18px]'>". $ctg['name'] ."</h1>";
                         echo "<span class='text-sm'>";
-                        echo "<a href='wikis?category=". $ctg['categoryId'] ."'>Discover Related Articles !</a>";
+                        echo "<a href='/Wiki/Pages/wikis?category=". $ctg['categoryId'] ."'>Discover Related Articles !</a>";
                         echo "</span>";
                         echo "</div>";
                         echo "</div>";
@@ -53,7 +54,7 @@
             </div>
 
             <div class="w-full h-[40px] mt-[35px] flex justify-center items-center">
-                <a href="categories" class="border-2 border-[#28427B] w-[50%] md:w-[20%] text-center rounded py-[5px] text-[#28427B] hover:bg-[#28427B] hover:text-white" >Explore More</a>
+                <a href="/Wiki/Pages/categories" class="border-2 border-[#28427B] w-[50%] md:w-[20%] text-center rounded py-[5px] text-[#28427B] hover:bg-[#28427B] hover:text-white" >Explore More</a>
             </div>
         </div>
     </section>
@@ -80,7 +81,7 @@
                             echo "<div class='mt-[10px] flex flex-col items-center'  >";
                             echo "<h1 class='font-[500] text-[18px]' >". $wiki['title'] ."</h1>";
                             echo "<span class='text-sm text-center'>";
-                            echo "<a href='wikiDetails?category=". $wiki['wikiId'] ."'>View Wiki Details & Information</a>";
+                            echo "<a href='/Wiki/Pages/wikiDetails?wikiId=". $wiki['wikiId'] ."'>View Wiki Details & Information</a>";
                             echo "</span>";
                             echo "</div>";
                             echo "</div>";
@@ -90,7 +91,7 @@
                 </div>
 
                 <div class="w-full h-[40px] mt-[35px] flex justify-center items-center">
-                    <a href="wikis" class="border-2 border-[#28427B] w-[50%] md:w-[20%] text-center rounded py-[5px] text-[#28427B] hover:bg-[#28427B] hover:text-white" >Explore More</a>
+                    <a href="/Wiki/Pages/wikis" class="border-2 border-[#28427B] w-[50%] md:w-[20%] text-center rounded py-[5px] text-[#28427B] hover:bg-[#28427B] hover:text-white" >Explore More</a>
                 </div>
         </div>
     </section>

@@ -13,9 +13,9 @@
             <!-- Section Head -->
             <?php require_once(__DIR__."/../incFiles/website/section-head.php"); ?>
 
-            <div class="w-full flex-col flex justify-center items-center mt-4 gap-y-2">
+            <!-- <div class="w-full flex-col flex justify-center items-center mt-4 gap-y-2">
                 <input type="search" name="searchInput"  placeholder="Search Category" class="w-[90%] lg:w-[50%] px-[20px] border-2 border-[#415a77] rounded h-[40px] placeholder:text-[#415a77] outline-none">
-            </div>
+            </div> -->
 
             <div class="flex items-center justify-center flex-col flex-wrap gap-x-[20px] gap-y-[10px] mt-[30px] md:flex-row" >
                 <!-- HOW A CATEGORY SHOULD LOOK -->
@@ -29,7 +29,7 @@
                             echo "<div class='ml-[20px]'>";
                             echo "<h1 class='font-[500] text-[18px]'>". $ctg['name'] ."</h1>";
                             echo "<span class='text-sm'>";
-                            echo "<a href='wikis?category=". $ctg['categoryId'] ."'>Discover Related Articles !</a>";
+                            echo "<a href='/Wiki/Pages/wikis?category=". $ctg['categoryId'] ."'>Discover Related Articles !</a>";
                             echo "</span>";
                             echo "</div>";
                             echo "</div>";
