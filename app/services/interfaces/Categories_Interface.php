@@ -5,6 +5,9 @@
 
         public function showCategories();
         public function getLatestCategories($limit);
+
+
+        public function countCategories();
         
     }
 

@@ -2,7 +2,7 @@
         <header class="w-[90%] mx-auto h-[80px] flex justify-between items-center" >
 
             <!-- Logo -->
-            <a href="home">
+            <a href="/Wiki/Pages/home">
                 <img src="<?= UrlRoot. "/img/logo/Wiki.png" ?>" alt="Wiki Logo" width="100px" class="lg:w-[130px]" >
             </a>
 
@@ -10,9 +10,15 @@
                 <!-- Prs Btns -->
                 <div class="flex items-center space-x-2 xl:space-x-4">
                     
-                    <a href='/Wiki/Authentification/login' class='bg-[#28427B] border-2 border-[#28427B] hover:bg-[#28427B]/80 focus:bg-[#404E6C] py-[4px] lg:py-[8px] px-[15px] lg:px-[20px] rounded text-white' >Login</a>
-                    <a href='/Wiki/Authentification/register' class='bg-[#28427B]/80 border-2 hover:bg-[#28427B] border-[#28427B] focus:bg-[#404E6C] py-[4px] lg:py-[8px] px-[15px] lg:px-[20px] rounded text-white'>Sign Up</a>
-                
+                    <?php
+                        if (!isset($_SESSION['UserInfo'])) {
+                            echo "<a href='/Wiki/Authentification/login' class='bg-[#28427B] border-2 border-[#28427B] hover:bg-[#28427B]/80 focus:bg-[#404E6C] py-[4px] lg:py-[8px] px-[15px] lg:px-[20px] rounded text-white' >Login</a>";
+                            echo "<a href='/Wiki/Authentification/register' class='bg-[#28427B]/80 border-2 hover:bg-[#28427B] border-[#28427B] focus:bg-[#404E6C] py-[4px] lg:py-[8px] px-[15px] lg:px-[20px] rounded text-white'>Sign Up</a>";
+                        } else {
+                            echo "<a href='/Wiki/Users/wikis' class='bg-[#28427B] border-2 border-[#28427B] hover:bg-[#28427B]/80 focus:bg-[#404E6C] py-[4px] lg:py-[8px] px-[15px] lg:px-[20px] rounded text-white'  >Go To Your Account</a>";
+                        }
+                    ?>
+
                     <button class="w-auto h-auto" id="burgerMenu">
                         <img src="<?= UrlRoot. "/img/icons/bar-2.png" ?>" alt="Burger Menu Icon" width="30px" class="lg-w-[40px]">
                     </button>

@@ -4,7 +4,7 @@
 
         private $db;
 
-        public function __construct($db)
+        public function __construct(Database $db)
         {   
             $this->db = $db;
         }
@@ -42,6 +42,23 @@
 
             $categoryData = $stmt->fetchAll(PDO::FETCH_ASSOC);
             return $categoryData;
+        }
+
+
+        /* Count Categories */
+        public function countCategories()
+        {
+            $sql = "
+                SELECT COUNT(categoryId) AS Count
+                FROM categories
+            ";
+
+            $pdo = $this->db->connect();
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute();
+
+            $CountCategory = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $CountCategory;
         }
         
     }

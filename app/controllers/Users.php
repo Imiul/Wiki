@@ -2,10 +2,13 @@
 
     class Users extends View {
 
-
         /* Wikis Page ======  */ 
         public function wikis()
         {
+            if (!$_SESSION['UserInfo'] || $_SESSION['UserInfo']['role'] != "User" ) {
+                header("Location: /Wiki/Authentification/login");
+            }
+
             $id = $_SESSION['UserInfo']['id'];
             $db = new Database();
             $User_Service = new User_Service($db);
@@ -85,10 +88,12 @@
         }
 
 
-
         /* myInfo Page ======  */
         public function myInfo()
         {
+            if (!$_SESSION['UserInfo'] || $_SESSION['UserInfo']['role'] != "User" ) {
+                header("Location: /Wiki/Authentification/login");
+            }
 
             $id = $_SESSION['UserInfo']['id'];
             $db = new Database();

@@ -103,7 +103,7 @@
     <?php require_once(__DIR__."/../incFiles/website/footer.php"); ?>
 
     <!-- Burger Menu Code --> 
-    <script src="<?= UrlRoot. "/js/pages/burger-menu.js" ?>" ></script>
+    <script src="<?= UrlRoot. "/public/js/auth/pages/burger-menu.js" ?>" ></script>
 
 </body>
 </html>

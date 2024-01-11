@@ -5,11 +5,23 @@
         /* Dashboard Page ======  */ 
         public function dashboard()
         {
+            // if (!$_SESSION['UserInfo'] || $_SESSION['UserInfo']['role'] != "Admin" ) {
+            //     header("Location: /Wiki/Authentification/login");
+            // }
+
+            $db = new Database();
+            $category_Service = new Categories_Service($db);
+            $ctgNumber = $category_Service->countCategories();
+
 
             /* Load A View */ 
-            $data = ["pageTitle" => "Dashboard Page"];
+            $data = [
+                "pageTitle" => "Dashboard Page",
+                "CategoryNumber" => $ctgNumber
+            ];
             $this->loadView("admin/dashboard", $data);
         }
+
 
 
         /* Dashboard Page ======  */ 
