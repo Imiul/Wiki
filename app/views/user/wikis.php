@@ -82,19 +82,42 @@
 
     <!-- ADD NEW WIKIS -->
     <div id="addNewWiki" class="fixed inset-0 flex items-center justify-end bg-black bg-opacity-50 hidden">
-        <section class="md:m-5 md:p-5 bg-white rounded-md absolute h-[95vh] w-[40vw]">
+        <section class="md:m-5 md:p-5 bg-white rounded-md absolute h-[95vh] w-[95vw] lg:w-[40vw]">
 
             <!-- CLOSE BTN -->
             <button  onclick="hideAddNewWiki()" class="bg-red-200 border-2 border-red-500 text-red-500 h-[50px] px-4 py-2 rounded mb-2" >Close</button>
             
             <!-- aDD fORM -->
-            <form method="POST" class="w-full">
+            <form method="POST" class="w-full" enctype="multipart/form-data" >
 
-                <button type="submit" name="addArticle" class="bg-blue-500 text-white px-4 py-2 rounded">Add New Wiki</button>
-                    <button type="reset" class="bg-blue-200 border-2 border-blue-500 text-blue-500 px-4 py-2 rounded">Reset Form</button>
+                <input type="text" name="title" placeholder="Title" class="w-full mb-2 p-2 border-2 border-gray-600 rounded">
+                <input type="text" name="content" placeholder="content" class="w-full mb-2 p-2 border-2 border-gray-600 rounded">
+                <select name="category" class="w-full mb-2 p-2 border-2 border-gray-600 rounded">
+                    <option selected disabled>Select Related Category</option>
+                    <?php
+                        foreach($data['categoryData'] as $ctg) {
+                            echo "<option value='". $ctg['categoryId'] ."' >". $ctg['name'] ."</option>";
+                        }
+                    ?>
+                </select>
+
+                <select name="tags[]" multiple class="w-full mb-2 p-2 border-2 border-gray-600 rounded">
+                    <option selected disabled>Select Related Tags</option>
+                    <?php
+                        foreach($data['tagsData'] as $tags) {
+                            echo "<option value='". $tags['tagId'] ."' >". $tags['name'] ."</option>";
+                        }
+                    ?>
+                </select>
+
+                <input type="file" name="picture" placeholder="Title" class="w-full mb-2 p-2 border-2 border-gray-600 rounded">
+
+                <button type="submit" name="addWiki" class="bg-blue-500 text-white px-4 py-2 rounded">Add New Wiki</button>
+                <button type="reset" class="bg-blue-200 border-2 border-blue-500 text-blue-500 px-4 py-2 rounded">Reset Form</button>
             </form>
         </section>
     </div>
+
 
 
     <!-- SCRIPT -->

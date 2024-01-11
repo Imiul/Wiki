@@ -69,7 +69,6 @@
                 
                 
                 /* handel image */
-                $picture = $_FILES["picture"]["name"];
                 $newPictureName = "img-" . time() . "-" . $_FILES["picture"]["name"];
                 $newPath = __DIR__."/../uploads/users/" . $newPictureName;
                 $tmpFile = $_FILES["picture"]["tmp_name"];

@@ -6,29 +6,84 @@
         /* Wikis Page ======  */ 
         public function wikis()
         {
-            
             $id = $_SESSION['UserInfo']['id'];
             $db = new Database();
             $User_Service = new User_Service($db);
             $UserData = $User_Service->getUserWikis($id);
 
+            /* Category */ 
+            $Category_Service = new Categories_Service($db);
+            $CategoryData = $Category_Service->showCategories();
+
+            /* Tags */
+            $Tags_Service = new Tags_Service($db);
+            $tagsData = $Tags_Service->showTags();
+
+            /* Wikis */
+            $Wikis_Service = new Wikis_Service($db);
+
+
+            /* Delete */ 
             if (isset($_POST['delete'])) {
 
                 $id = $_POST['delete'];
-                $Wikis_Service = new Wikis_Service($db);
                 $Wikis_Service->deleteWikiById($id);
                 header("Location: /Wiki/Users/wikis");
             }
+
+
+            /* Add */ 
+            if (isset($_POST['addWiki'])) {
+
+                $wikiId = uniqid(mt_rand(), true);
+                $title = $_POST['title'];
+                $content = $_POST['content'];
+                $categoryId = $_POST['category'];
+                $addDate = date("Y-m-d H:i:s");
+                $addedBy = $_SESSION['UserInfo']['id'];
+
+                /* Handel Image */ 
+                $newPictureName = "img-". time() . "-" . $_FILES['picture']["name"];
+                $newPath = __DIR__."/../uploads/ctg/" . $newPictureName;
+                $tmpFile = $_FILES['picture']["tmp_name"];
+
+                try {
+                    move_uploaded_file($tmpFile, $newPath);
+                } catch (PDOException $e) {
+                    echo "ERROR UPLOADING IMAGE !! ". $e->getMessage();
+                }
+
+                $Wiki = new Wiki($wikiId, $title, $content,  $newPictureName, $categoryId, $addDate, $addedBy);
+                $Wikis_Service->addWiki($Wiki);
+
+
+                /* Handle Tags */
+                $tagsOfWIki = $_POST['tags'];
+                $tagsOfWiki_Service = new TagsOfWiki_Service($db);
+
+                foreach($tagsOfWIki as $tagName) {
+
+                    $id_2 = uniqid(mt_rand(), true);
+                    $toInsert = new TagsOfWikis($id_2, $wikiId, $tagName);
+                    $tagsOfWiki_Service->insertTagsOfWiki($toInsert);
+                    header("Location: /Wiki/Users/wikis");
+
+                }
+            }
+
 
             /* Load A View */ 
             $data = [
                 "pageTitle" => "Dashboard Page",
                 'sectionTile_1' => "Explore Your Wikis",
                 'sectionDescription_1' => "You Can Edit, Modify, Delete Your Own WIkis !",
-                'userWikis' => $UserData
+                'userWikis' => $UserData,
+                'categoryData' => $CategoryData,
+                'tagsData' => $tagsData
             ];
             $this->loadView("user/wikis", $data);
         }
+
 
 
         /* myInfo Page ======  */

@@ -58,12 +58,11 @@
                 echo "</div>";
 
             echo "</div>";
+
+            echo "<p class='ext-md font-[400] w-[95%] lg:w-[55%] text-justify'>";
+            echo $data['ArticleData']['content'];
+            echo "</p>";
             ?>
-        
-        
-        <p class="text-md font-[400] w-[95%] lg:w-[55%] text-justify" >
-            Lorem ipsum dolor sit amet em doloribus, quisquam fugiat magnam tetatibus ut fugiat ntemporeis nemo necessitatibus minima illum. Facere maxime debitis magni tempora quaerat quidem soluta illum aut! Quaerat quisquam a labore veniam quis tempore ipsa eveniet quidem voluptates voluptatum pariatur sit delectus, porro aperiam voluptate nemo placeat. Odio corporis nobis, dolore hic repudiandae debitis ad a voluptates? Tempora turi illum tempore voluptas!
-        </p>
 
 
     </section>

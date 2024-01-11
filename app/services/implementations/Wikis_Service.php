@@ -10,6 +10,7 @@
             $this->db = $db;
         }
 
+        
 
         /* SHow All Categories */ 
         public function showWikis()
@@ -32,7 +33,7 @@
             $sql = "
                 SELECT * 
                 FROM wikis 
-                ORDER BY addDate DESC
+                ORDER BY addDate ASC
                 LIMIT :limit
             ";
             $pdo = $this->db->connect();
@@ -85,6 +86,37 @@
 
             $stmt = $pdo->prepare($sql);
             $stmt->bindParam(":id", $id);
+            $stmt->execute();
+        }
+
+
+        /* Add Wiki */
+        public function addWiki(Wiki $wiki)
+        {
+            $id = $wiki->getWikiId();
+            $title = $wiki->getTitle();
+            $content = $wiki->getContent();
+            $picture = $wiki->getPicture();
+            $category = $wiki->getCategoryId();
+            $addDate = $wiki->getAddDate();
+            $addedBy = $wiki->getAddedBy();
+            
+            $sql = "
+                INSERT INTO wikis (wikiId, title, content, picture, categoryId, addDate, addedBy)
+                VALUES (:id, :title, :content, :picture, :categoryId, :addDate, :addedBy)
+            ";
+
+            $pdo = $this->db->connect();
+            $stmt = $pdo->prepare($sql);
+
+            $stmt->bindParam(":id", $id);
+            $stmt->bindParam(":title", $title);
+            $stmt->bindParam(":content", $content);
+            $stmt->bindParam(":picture", $picture);
+            $stmt->bindParam(":categoryId", $category);
+            $stmt->bindParam(":addDate", $addDate);
+            $stmt->bindParam(":addedBy", $addedBy);
+
             $stmt->execute();
         }
 

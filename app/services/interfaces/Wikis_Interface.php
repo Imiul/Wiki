@@ -12,6 +12,8 @@
         public function getWikisByName($name);
         
         public function deleteWikiById($id);
+
+        public function addWiki(Wiki $wiki);
     }
 
     ?>
