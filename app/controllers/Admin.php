@@ -76,8 +76,16 @@
         public function tags()
         {
 
+            $db = new Database();
+            $tags_Service = new Tags_Service($db);
+            $tagsData = $tags_Service->showTags();
+
+
             /* Load A View */ 
-            $data = ["pageTitle" => "Tags Page"];
+            $data = [
+                "pageTitle" => "Tags Page",
+                "tagsData" => $tagsData
+            ];
             $this->loadView("admin/tags", $data);
         }
 
