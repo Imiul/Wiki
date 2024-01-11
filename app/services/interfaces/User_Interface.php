@@ -20,6 +20,8 @@
 
         public function countAuthors();
         public function countAdmins();
+
+        public function getAuthors();
     }
 
     ?>

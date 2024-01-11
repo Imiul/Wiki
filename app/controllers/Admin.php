@@ -46,9 +46,14 @@
         public function users()
         {
 
+            $db = new Database();
+            $User_Service = new User_Service($db);
+            $UsersData = $User_Service->getAuthors();
+
             /* Load A View */ 
             $data = [
-                "pageTitle" => "Users Page"
+                "pageTitle" => "Users Page",
+                "UsersData" => $UsersData
             ];
             $this->loadView("admin/users", $data);
         }

@@ -208,15 +208,15 @@
             SELECT COUNT(UserId) AS Count
             FROM users
             WHERE role = :role
-        ";
+            ";
 
-        $pdo = $this->db->connect();
-        $stmt = $pdo->prepare($sql);
-        $stmt->bindValue(":role", "User");
-        $stmt->execute();
+            $pdo = $this->db->connect();
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindValue(":role", "User");
+            $stmt->execute();
 
-        $CountAuthors = $stmt->fetch(PDO::FETCH_ASSOC);
-        return $CountAuthors;
+            $CountAuthors = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $CountAuthors;
         }
 
 
@@ -229,15 +229,27 @@
                 WHERE role = :role
             ";
 
-        $pdo = $this->db->connect();
-        $stmt = $pdo->prepare($sql);
-        $stmt->bindValue(":role", "Admin");
-        $stmt->execute();
+            $pdo = $this->db->connect();
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindValue(":role", "Admin");
+            $stmt->execute();
 
-        $CountAdmins = $stmt->fetch(PDO::FETCH_ASSOC);
-        return $CountAdmins;
+            $CountAdmins = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $CountAdmins;
         }
 
+        /* Get Users */
+        public function getAuthors()
+        {
+            $sql = "SELECT * FROM users WHERE role = :role";
+            $pdo = $this->db->connect();
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindValue(":role", "User");
+            $stmt->execute();
+
+            $Users = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $Users;
+        }
     }
 
     ?>
