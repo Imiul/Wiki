@@ -16,6 +16,10 @@
 
         public function updateProfile($firstName, $lastName, $email, $id);
         public function updatePassword($password, $id);
+
+
+        public function countAuthors();
+        public function countAdmins();
     }
 
     ?>

@@ -26,12 +26,12 @@
             <div class="mt-8 bg-gray-200 flex flex-wrap justify-between gap-4">
 
                 <div class="w-[45%] md- bg-blue-200/30 rounded p-8 rounded  border-2 border-blue-800 text-center" >
-                    <h1 class="font-[900] text-md md:text-2xl" ><?= $data['CategoryNumber']['Count'] ?></h1>
+                    <h1 class="font-[900] text-md md:text-2xl" ><?= $data['AuthorsNumber']['Count'] ?></h1>
                     <h1 class="font-[900] text-md md:text-2xl mt-2" ><a href="/Wiki/Admin/users">Wiki Users</a></h1>
                 </div>
 
                 <div class="w-[45%] bg-blue-200/30 rounded p-8 rounded  border-2 border-blue-800 text-center" >
-                    <h1 class="font-[900] text-md md:text-2xl" ><?= $data['CategoryNumber']['Count'] ?></h1>
+                    <h1 class="font-[900] text-md md:text-2xl" ><?= $data['AdminsNumber']['Count'] ?></h1>
                     <h1 class="font-[900] text-md md:text-2xl mt-2" ><a href="/Wiki/Admin/users">Admins</a></h1>
                 </div>
 
@@ -41,16 +41,14 @@
                 </div>
 
                 <div class="w-[45%] bg-blue-200/30 rounded p-8 rounded  border-2 border-blue-800 text-center" >
-                    <h1 class="font-[900] text-md md:text-2xl" ><?= $data['CategoryNumber']['Count'] ?></h1>
+                    <h1 class="font-[900] text-md md:text-2xl" ><?= $data['TagsNumber']['Count'] ?></h1>
                     <h1 class="font-[900] text-md md:text-2xl mt-2" ><a href="/Wiki/Admin/tags">Tags</a></h1>
                 </div>
 
-                <div class="w-[45%] bg-blue-200/30 rounded p-8 rounded  border-2 border-blue-800 text-center" >
-                    <h1 class="font-[900] text-md md:text-2xl" ><?= $data['CategoryNumber']['Count'] ?></h1>
+                <div class="w-[100%] md:w-[45%] bg-blue-200/30 rounded p-8 rounded  border-2 border-blue-800 text-center" >
+                    <h1 class="font-[900] text-md md:text-2xl" ><?= $data['WikisNumber']['Count'] ?></h1>
                     <h1 class="font-[900] text-md md:text-2xl mt-2" ><a href="/Wiki/Admin/wikis">Wikis Writed</a></h1>
                 </div>
-
-                
 
             </div>
         </div>

@@ -120,6 +120,21 @@
             $stmt->execute();
         }
 
+
+        public function countWikis()
+        {
+            $sql = "
+                SELECT COUNT(wikiId) AS Count
+                FROM wikis
+            ";
+
+            $pdo = $this->db->connect();
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute();
+
+            $CountWikis = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $CountWikis;
+        }
     }
 
     ?>

@@ -23,6 +23,22 @@
             return $TagsData;
         }
 
+        /* Count Tags */
+        public function countTags()
+        {
+            $sql = "
+                SELECT COUNT(tagId) AS Count
+                FROM tags
+            ";
+
+            $pdo = $this->db->connect();
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute();
+
+            $CountTags = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $CountTags;
+        }
+
         
     }
 

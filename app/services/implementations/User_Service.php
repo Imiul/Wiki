@@ -200,6 +200,44 @@
             $stmt->execute();
         }
 
+
+        /* Count Users */
+        public function countAuthors()
+        {
+            $sql = "
+            SELECT COUNT(UserId) AS Count
+            FROM users
+            WHERE role = :role
+        ";
+
+        $pdo = $this->db->connect();
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindValue(":role", "User");
+        $stmt->execute();
+
+        $CountAuthors = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $CountAuthors;
+        }
+
+
+        /* Count Admins */
+        public function countAdmins()
+        {
+            $sql = "
+                SELECT COUNT(UserId) AS Count
+                FROM users
+                WHERE role = :role
+            ";
+
+        $pdo = $this->db->connect();
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindValue(":role", "Admin");
+        $stmt->execute();
+
+        $CountAdmins = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $CountAdmins;
+        }
+
     }
 
     ?>
