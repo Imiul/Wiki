@@ -11,7 +11,7 @@
         public function __construct($categoryId, $name, $description, $picture, $addDate)
         {
             $this->categoryId = $categoryId;
-            $this->name = $categoryId;
+            $this->name = $name;
             $this->description = $description;
             $this->picture = $picture;
             $this->addDate = $addDate;

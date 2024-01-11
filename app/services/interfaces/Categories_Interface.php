@@ -8,7 +8,11 @@
 
 
         public function countCategories();
-        
+
+        public function deleteCategory($id);
+
+        public function addCategory(Category $category);
+
     }
 
     ?>

@@ -30,6 +30,7 @@
                             <td class="py-4 px-2">Email</td>
                             <td class="py-4 px-2">Member SInce</td>
                             <td class="py-4 px-2">Last Log In Date</td>
+                            <td class="py-4 px-2">Actions</td>
                         </tr>
                     </thead>
                     <tbody>
@@ -46,6 +47,11 @@
                                 echo "<td class='py-2 px-2 border-2 border-[#28427B]'>". $User['email'] ."</td>";
                                 echo "<td class='py-2 px-2 border-2 border-[#28427B]'>". $User['addDate'] ." </td>";
                                 echo "<td class='py-2 px-2 border-2 border-[#28427B]'>". $User['lastLoginDate'] ." </td>";
+                                echo "<td class='py-2 px-2 border-2 border-[#28427B]'>
+                                        <form method='post'>
+                                            <button class='bg-red-500 text-white rounded px-4 py-2 border-2 border-red-500 hover:bg-red-500/70' style='transition-duration: 0.5s;' name='deleteUser' value='". $User['UserId'] ."' >Delete</button>
+                                        </form>
+                                    </td>";
                                 echo "</tr>";
 
                                 
@@ -63,6 +69,7 @@
 
     <!-- Data table -->
     <?php require_once(__DIR__ . "/../incFiles/admin/dataTable.php"); ?>
+    <!-- SCRIPT -->
 
 </body>
 </html>

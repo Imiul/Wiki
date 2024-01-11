@@ -60,6 +60,43 @@
             $CountCategory = $stmt->fetch(PDO::FETCH_ASSOC);
             return $CountCategory;
         }
+
+        /* Delete Category */ 
+        public function deleteCategory($id)
+        {
+            $sql = "DELETE FROM categories WHERE categoryId = :id";
+
+            $pdo = $this->db->connect();
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindParam(":id", $id);
+            $stmt->execute();
+        }
+
+        /* Add Category */
+        public function addCategory(Category $category)
+        {
+
+            $id = $category->getId();
+            $name = $category->getName();
+            $description = $category->getDescription();
+            $picture = $category->getPicture();
+            $addDate = $category->getAddDate();
+
+
+            $sql = "
+                INSERT INTO categories (categoryId, name, description, picture, addDate)
+                VALUES (:id, :name, :description, :picture, :addDate)
+            ";
+
+            $pdo = $this->db->connect();
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindParam(':id', $id);
+            $stmt->bindParam(':name', $name);
+            $stmt->bindParam(':description', $description);
+            $stmt->bindParam(':picture', $picture);
+            $stmt->bindParam(':addDate', $addDate);
+            $stmt->execute();
+        }
         
     }
 
