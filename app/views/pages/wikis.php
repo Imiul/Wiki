@@ -36,7 +36,7 @@
 
                             foreach($data['WikisData'] as $wiki) {
                                 echo "<div class='border-2 border-[#28427B] w-[95%] md:w-[40%] lg:w-[30%] xl:w-[20%] rounded bg-blue-100/70 px-[30px] py-[20px]'>";
-                                echo "<div class='h-[200px] w-[100%] rounded bg-gray-200 border-2 border-[#28427B]' ></div>";
+                                echo "<div class='hw-[100%] rounded bg-gray-200 relative flex justify-center p-2' ><img width='250px'  src='". UrlRoot."/public/uploads/wikis/" . $wiki['picture'] ."' ></div>";
                                 echo "<div class='mt-[10px] flex flex-col items-center'  >";
                                 echo "<h1 class='font-[500] text-[18px]' >". $wiki['title'] ."</h1>";
                                 echo "<span class='text-sm text-center'>";
