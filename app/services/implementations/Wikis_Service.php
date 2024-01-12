@@ -66,8 +66,10 @@
         public function getWikiDetails($id)
         {
             $sql = "
-                SELECT * 
-                FROM wikis 
+                SELECT wikis.*, categories.name, categories.description, categories.picture, users.UserId, users.firstName, users.lastName
+                FROM wikis
+                INNER JOIN categories ON wikis.categoryId = categories.categoryId 
+                INNER JOIN users ON wikis.addedBy = users.userId
                 WHERE wikiId = :id
             ";
             $pdo = $this->db->connect();

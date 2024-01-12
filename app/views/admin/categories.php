@@ -36,19 +36,21 @@
                     <tbody>
 
                         <?php
-                            foreach($data['categoriesData'] as $tag) {
+                            foreach($data['categoriesData'] as $ctg) {
 
                                 echo "<tr class='border-2 border-[#28427B]'>";
-                                echo "<td class='py-2 px-2 border-2 border-[#28427B]'>". $tag['categoryId'] ."</td>";
+                                echo "<td class='py-2 px-2 border-2 border-[#28427B]'>". $ctg['categoryId'] ."</td>";
                                 echo "<td class='py-2 px-2' >";
-                                echo "<img  src='". UrlRoot."/public/uploads/ctg/" . $tag['picture'] ."' class='w-[80px]' >";
+                                echo "<img  src='". UrlRoot."/public/uploads/ctg/" . $ctg['picture'] ."' class='w-[80px]' >";
                                 echo "</td>";
-                                echo "<td class='py-2 px-2 border-2 border-[#28427B]'>". $tag['name'] ."</td>";
-                                echo "<td class='py-2 px-2 border-2 border-[#28427B]'>". $tag['description'] ."</td>";
-                                echo "<td class='py-2 px-2 border-2 border-[#28427B]'>". $tag['addDate'] ."</td>";
+                                echo "<td class='py-2 px-2 border-2 border-[#28427B]'>". $ctg['name'] ."</td>";
+                                echo "<td class='py-2 px-2 border-2 border-[#28427B]'>". $ctg['description'] ."</td>";
+                                echo "<td class='py-2 px-2 border-2 border-[#28427B]'>". $ctg['addDate'] ."</td>";
                                 echo "<td class='py-2 px-2 border-2 border-[#28427B]'>
                                         <form method='post'>
-                                            <button class='bg-red-500 text-white rounded px-4 py-2 border-2 border-red-500 hover:bg-red-500/70' style='transition-duration: 0.5s;' name='deleteCategory' value='". $tag['categoryId'] ."' >Delete</button>
+                                            <button class='bg-red-500 text-white rounded px-4 py-2 border-2 border-red-500 hover:bg-red-500/70' style='transition-duration: 0.5s;' name='deleteCategory' value='". $ctg['categoryId'] ."' >Delete</button>
+                                        
+                                            <a class='bg-blue-500 text-white rounded px-4 py-2 border-2 border-blue-500 hover:bg-blue-500/70' href='?update=". $ctg['categoryId'] ."' >Update</a>
                                         </form>
                                     </td>";
                                 echo "</tr>";
@@ -88,6 +90,31 @@
     </div>
 
 
+    <?php
+        if (isset($_GET['update'])) {
+            echo "<div id='editCategory' class='fixed inset-0 flex items-center justify-end bg-black bg-opacity-50 hidden' >";
+            echo "<section class='md:m-5 md:p-5 bg-white rounded-md absolute h-[95vh] w-[95vw] lg:w-[40vw]'>";
+
+            /* CLOSE BTN */ 
+            echo "<button onclick='closeEditCategory()' class='bg-red-200 border-2 border-red-500 text-red-500 h-[50px] px-4 py-2 rounded mb-8' >Close</button>";
+            echo "<form method='POST' class='w-full' enctype='multipart/form-data' >";
+
+            echo "<input type='text' name='categoryId' value='". $data['categoryData']['categoryId'] ."' hidden >";
+            echo "<input type='text' name='categoryName' value='". $data['categoryData']['name'] ."' class='w-full mb-2 p-2 border-2 border-gray-600 rounded'>";
+            echo "<input type='text' name='categoryDescription' value='". $data['categoryData']['description'] ."' class='w-full mb-2 p-2 border-2 border-gray-600 rounded'>";
+            
+            echo "If You Want To CHange The Picture, Select Another One :";
+            echo "<input type='file' name='categoryPicture' class='w-full mb-2 p-2 border-2 border-gray-600 rounded'>";
+
+            echo "<button type='submit' name='updateCategory' class='bg-blue-500 text-white px-4 py-2 rounded'>Update Tag</button>";
+
+            echo "</form>";
+            echo "</section>";
+            echo "</div>";
+        }
+    ?>
+
+
 
     <!-- Data table -->
     <?php require_once(__DIR__ . "/../incFiles/admin/dataTable.php"); ?>
@@ -96,6 +123,11 @@
     <script>
         var addNewCategory = document.getElementById('addNewCategory');
         function CateogryPopUp() {addNewCategory.classList.toggle('hidden');}
+
+        function closeEditCategory() {
+            document.getElementById('editCategory').classList.add('hidden');
+        }
+
     </script>
 
 </body>

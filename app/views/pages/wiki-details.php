@@ -20,7 +20,7 @@
 
         <!-- IMage --> 
         <div class="w-[95%] lg:w-[65%] min-h-[250px] h-auto bg-gray-200 mt-[35px]">
-            <img src="" alt="Hero Img" width="100%">
+            <img src="<?= UrlRoot."/public/uploads/wikis/". $data['ArticleData']['picture'] ?>" alt="Hero Img" width="100%">
         </div>
 
 
@@ -34,7 +34,7 @@
                 /* Author Information */ 
                 echo "<div class='border-2 border-[#000] py-2 px-[25px]'>";
                     echo "<h1 class='font-[500] underline' > Autheur : </h1>";
-                    echo "<span>". $data['ArticleData']['addedBy'] ."</span>";
+                    echo "<span>". $data['ArticleData']['firstName'] . " " . $data['ArticleData']['lastName'] ."</span>";
                 echo "</div>";
                 
                 /* Category Information */ 
@@ -59,7 +59,7 @@
 
             echo "</div>";
 
-            echo "<p class='ext-md font-[400] w-[95%] lg:w-[55%] text-justify'>";
+            echo "<p class=' font-[400] w-[95%] lg:w-[55%] text-center mb-[50px]'>";
             echo $data['ArticleData']['content'];
             echo "</p>";
             ?>

@@ -41,7 +41,7 @@
         }
 
 
-        /* Dashboard Page ======  */ 
+        /* users Page ======  */ 
         public function users()
         {
 
@@ -70,7 +70,7 @@
         }
 
 
-        /* Dashboard Page ======  */ 
+        /* categories Page ======  */ 
         public function categories()
         {
             if (!$_SESSION['UserInfo'] || $_SESSION['UserInfo']['role'] != "Admin" ) {
@@ -116,19 +116,58 @@
                 header("Location: /Wiki/Admin/categories");
             }
 
-
             /* Load A View */ 
             $data = [
                 "pageTitle" => "Categories Page",
                 "specialName" => "Categories",
                 "categoriesData" => $categoriesData
             ];
-                $this->loadView("admin/categories", $data);
+
+
+            if (isset($_GET['update'])) {
+                
+                $id = $_GET['update'];
+                echo "
+                    <script>
+                        document.addEventListener('DOMContentLoaded', () => {
+                            document.getElementById('editCategory').classList.remove('hidden');
+                        });
+                    </script>
+                ";
+
+                $categoryData = $category_Service->categoryInformation($id);
+                $data['categoryData'] = $categoryData;
+                
+                if (isset($_POST['updateCategory'])) {
+
+                    $id = $_POST['categoryId'];
+                    $name = $_POST['categoryName'];
+                    $description = $_POST['categoryDescription'];
+
+                    /* Handel Image */
+                    $pictureNewName = "img-" . time() . $_FILES['categoryPicture']["name"];
+                    $newPath = __DIR__."/../../public/uploads/ctg/" . $pictureNewName;
+                    $tmp = $_FILES['categoryPicture']['tmp_name'];
+
+                    try {
+                        move_uploaded_file($tmp, $newPath);
+                    } catch (PDOException $e) {
+                        echo "ERROR UPLOADING IMAGE !!". $e->getMessage();
+                        die();
+                    }
+
+                    $category_Service->editCategory($id, $name, $description, $pictureNewName);
+                    header("Location: /Wiki/Admin/categories");
+                    
+                }
+            }
+
+            
+            $this->loadView("admin/categories", $data);
         }
 
 
-
-        /* Dashboard Page ======  */ 
+        /* tags Page ======  */ 
         public function tags()
         {
             if (!$_SESSION['UserInfo'] || $_SESSION['UserInfo']['role'] != "Admin" ) {
@@ -188,7 +227,6 @@
 
             $this->loadView("admin/tags", $data);
         }
-
 
 
         /* Dashboard Page ======  */ 

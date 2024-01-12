@@ -100,16 +100,19 @@
 
 
         /* Category To Edit */ 
-        public function editCategory($id, $name)
+        public function editCategory($id, $name, $description, $picture)
         {
             $sql = "
-                UPDATE tags
-                SET name = :name
-                WHERE tagId = :id";
+                UPDATE categories
+                SET name = :name, description = :description, picture = :picture
+                WHERE categoryId = :id
+            ";
 
             $pdo = $this->db->connect();
             $stmt = $pdo->prepare($sql);
             $stmt->bindParam(":name", $name);
+            $stmt->bindParam(":description", $description);
+            $stmt->bindParam(":picture", $picture);
             $stmt->bindParam(":id", $id);
             $stmt->execute();
         }
@@ -119,16 +122,17 @@
         {
             $sql = "
                 SELECT * 
-                FROM tags 
-                WHERE tagId = :id
+                FROM categories 
+                WHERE categoryId = :id
             ";
+
             $pdo = $this->db->connect();
             $stmt = $pdo->prepare($sql);
             $stmt->bindParam(":id", $id);
             $stmt->execute();
 
-            $tagData = $stmt->fetch(PDO::FETCH_ASSOC);
-            return $tagData;
+            $categoryData = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $categoryData;
         }
         
     }

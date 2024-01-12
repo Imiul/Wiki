@@ -14,7 +14,7 @@
         public function addCategory(Category $category);
 
         public function categoryInformation($id);
-        public function editCategory($id, $name);
+        public function editCategory($id, $name, $description, $picture);
 
     }
 
