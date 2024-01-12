@@ -16,6 +16,7 @@
         public function addWiki(Wiki $wiki);
 
         public function countWikis();
+        public function archiveWiki($id);
     }
 
     ?>

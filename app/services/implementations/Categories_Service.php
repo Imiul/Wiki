@@ -97,6 +97,39 @@
             $stmt->bindParam(':addDate', $addDate);
             $stmt->execute();
         }
+
+
+        /* Category To Edit */ 
+        public function editCategory($id, $name)
+        {
+            $sql = "
+                UPDATE tags
+                SET name = :name
+                WHERE tagId = :id";
+
+            $pdo = $this->db->connect();
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindParam(":name", $name);
+            $stmt->bindParam(":id", $id);
+            $stmt->execute();
+        }
+
+        
+        public function categoryInformation($id)
+        {
+            $sql = "
+                SELECT * 
+                FROM tags 
+                WHERE tagId = :id
+            ";
+            $pdo = $this->db->connect();
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindParam(":id", $id);
+            $stmt->execute();
+
+            $tagData = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $tagData;
+        }
         
     }
 

@@ -9,6 +9,9 @@
         public function addTag(Tags $tag);
 
         public function deleteTag($id);
+
+        public function tagInformation($id);
+        public function editTag($id, $name);
     }
 
     ?>

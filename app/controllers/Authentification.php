@@ -70,7 +70,7 @@
                 
                 /* handel image */
                 $newPictureName = "img-" . time() . "-" . $_FILES["picture"]["name"];
-                $newPath = __DIR__."/../uploads/users/" . $newPictureName;
+                $newPath = __DIR__."/../../public/uploads/users/" . $newPictureName;
                 $tmpFile = $_FILES["picture"]["tmp_name"];
 
                 try {
@@ -95,8 +95,8 @@
                     "role" => $role
                 ];
                 
-                // header("Location: /wiki/Users/notFound");
-                // die();
+                header("Location: /wiki/Users/wikis");
+                die();
             }
 
             /* Load A View */ 
@@ -110,7 +110,7 @@
         {
             session_unset();
             session_destroy();
-            header("Location: /Wiki/Authentification/login");
+            header("Location: /Wiki/Pages/home");
         }
 
         

@@ -60,7 +60,7 @@
                 $categoryName = $_GET['category'];
                 $WikisData = $Wikis_Service->getWikisByName($categoryName);
             } else {
-                $WikisData = $Wikis_Service->showWikis();
+                $WikisData = $Wikis_Service->showNonArchivedWikis();
             }
 
             

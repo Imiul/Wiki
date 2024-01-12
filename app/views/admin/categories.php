@@ -23,9 +23,9 @@
             <div class="mt-8 bg-gray-200 ">     
 
                 <table class="w-full py-2 px-2 rounded display" id="Table" >
-                    <thead class="bg-[#28427B] text-white ">
+                    <thead class="bg-[#28427B] text-white border-2 border-[#28427B]">
                         <tr>
-                            <td class="py-4 px-2" >Tag Id</td>
+                            <td class="py-4 px-2" >Category Id</td>
                             <td class="py-4 px-2" >Picture </td>
                             <td class="py-4 px-2">Name</td>
                             <td class="py-4 px-2">Description</td>

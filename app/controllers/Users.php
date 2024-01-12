@@ -47,7 +47,7 @@
 
                 /* Handel Image */ 
                 $newPictureName = "img-". time() . "-" . $_FILES['picture']["name"];
-                $newPath = __DIR__."/../uploads/ctg/" . $newPictureName;
+                $newPath = __DIR__."/../../public/uploads/wikis/" . $newPictureName;
                 $tmpFile = $_FILES['picture']["tmp_name"];
 
                 try {

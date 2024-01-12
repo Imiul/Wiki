@@ -17,7 +17,7 @@
             <div>
                 <h1 class="text-md md:text-xl lg:text-3xl font-[800] mb-8">ADMIN / Dashboard</h1>
                 <div class="w-full bg-blue-100 border-2 border-blue-900 rounded py-8 px-4">
-                    <h1 class="text-md md:text-xl lg:text-xl font-[500]" >Welcome Back <u>< Name ></u> ! Take Full Control Of Wiki Data</h1>
+                    <h1 class="text-md md:text-xl lg:text-xl font-[500]" >Welcome Back <u class="px-4" ><?= $_SESSION['UserInfo']['username'] ?></u> ! Take Full Control Of Wiki Data</h1>
                 </div>
             </div>
 

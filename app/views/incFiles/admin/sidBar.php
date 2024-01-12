@@ -9,15 +9,22 @@
 
         <li>
             <h1 class="text-xl font-[500] text-white bg-blue-100/20 rounded py-[10px] px-8 flex items-center gap-x-4 ">
-                <img src="<?= UrlRoot."/public/img/icons/home.png" ?>" alt="" width="30px">
+                <img src="<?= UrlRoot."/public/img/icons/analytics.png" ?>" alt="" width="30px">
                 <a href="/Wiki/Admin/dashboard" class="hidden lg:block">Dashboard</a>
             </h1>
         </li>
 
         <li>
             <h1 class="text-xl font-[500] text-white bg-blue-100/10 rounded py-[10px] px-8 flex items-center gap-x-4">
-                <img src="<?= UrlRoot."/public/img/icons/users.png" ?>" alt="" width="30px">
+                <img src="<?= UrlRoot."/public/img/icons/users_1.png" ?>" alt="" width="30px">
                 <a href="/Wiki/Admin/users" class="hidden lg:block">Users</a>
+            </h1>
+        </li>
+
+        <li>
+            <h1 class="text-xl font-[500] text-white bg-blue-100/10 rounded py-[10px] px-8 flex items-center gap-x-4">
+                <img src="<?= UrlRoot."/public/img/icons/admin.png" ?>" alt="" width="30px">
+                <a href="/Wiki/Admin/admins" class="hidden lg:block">Admins</a>
             </h1>
         </li>
 
@@ -42,7 +49,14 @@
             </h1>
         </li>
 
-        <li class="mt-8" >
+        <li class="mt-8">
+            <h1 class="text-xl font-[500] text-white bg-blue-100/10 rounded py-[10px] px-8 flex items-center gap-x-4">
+                <img src="<?= UrlRoot."/public/img/icons/settings.png" ?>" alt="" width="30px">
+                <a href="/Wiki/Admin/settings" class="hidden lg:block">Settings</a>
+            </h1>
+        </li>
+
+        <li>
             <h1 class="text-xl font-[500] text-red-600 bg-red-300/70 border-2 border-red-600 rounded py-[10px] px-8 flex items-center gap-x-4">
                 <img src="<?= UrlRoot."/public/img/icons/logout.png" ?>" alt="" width="30px" style="transform: rotate(-180deg);">
                 <a href="/Wiki/Authentification/logout" class="hidden lg:block">Log out</a>

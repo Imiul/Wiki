@@ -23,7 +23,7 @@
             <div class="mt-8 bg-gray-200 ">     
 
                 <table class="w-full py-2 px-2 rounded display" id="Table" >
-                    <thead class="bg-[#28427B] text-white ">
+                    <thead class="bg-[#28427B] text-white border-2 border-[#28427B]">
                         <tr>
                             <td class="py-4 px-2" >Tag Id</td>
                             <td class="py-4 px-2">Name</td>
@@ -40,17 +40,16 @@
                                 echo "<td class='py-2 px-2 border-2 border-[#28427B]'>". $tag['tagId'] ."</td>";
                                 echo "<td class='py-2 px-2 border-2 border-[#28427B]'>". $tag['name'] ."</td>";
                                 echo "<td class='py-2 px-2 border-2 border-[#28427B]'>". $tag['addDate'] ."</td>";
-                                echo "<td class='py-2 px-2 border-2 border-[#28427B]'>
-                                        <form method='post'>
+                                echo "<td class='py-2 px-2 flex gap-x-2 '>
+                                        <form method='post' >
                                             <button class='bg-red-500 text-white rounded px-4 py-2 border-2 border-red-500 hover:bg-red-500/70' style='transition-duration: 0.5s;' name='deleteTag' value='". $tag['tagId'] ."' >Delete</button>
                                         </form>
+
+                                        <a class='bg-blue-500 text-white rounded px-4 py-2 border-2 border-blue-500 hover:bg-blue-500/70' href='?update=". $tag['tagId'] ."' >Update</a>
                                     </td>";
                                 echo "</tr>";
-
-                                
                             }
                         ?>
-
                     </tbody>
                 </table>
 
@@ -78,6 +77,27 @@
     </div>
 
 
+    <?php
+        if (isset($_GET['update'])) {
+            echo "<div id='editTag' class='fixed inset-0 flex items-center justify-end bg-black bg-opacity-50 hidden' >";
+            echo "<section class='md:m-5 md:p-5 bg-white rounded-md absolute h-[95vh] w-[95vw] lg:w-[40vw]'>";
+
+            /* CLOSE BTN */ 
+            echo "<button onclick='closeEditTag()' class='bg-red-200 border-2 border-red-500 text-red-500 h-[50px] px-4 py-2 rounded mb-8' >Close</button>";
+            echo "<form method='POST' class='w-full'>";
+
+            echo "<input type='text' name='tagId' value='". $data['tagData']['tagId'] ."' hidden >";
+            echo "<input type='text' name='tagName' value='". $data['tagData']['name'] ."' class='w-full mb-2 p-2 border-2 border-gray-600 rounded'>";
+
+            echo "<button type='submit' name='updateTag' class='bg-blue-500 text-white px-4 py-2 rounded'>Update Tag</button>";
+
+            echo "</form>";
+            echo "</section>";
+            echo "</div>";
+        }
+    ?>
+
+
 
     <!-- Data table -->
     <?php require_once(__DIR__ . "/../incFiles/admin/dataTable.php"); ?>
@@ -86,7 +106,13 @@
     <script>
         var addNewTag = document.getElementById('addNewTag');
         function TagPopUp() {addNewTag.classList.toggle('hidden');}
+
+        function closeEditTag() {
+            document.getElementById('editTag').classList.add('hidden');
+        }
     </script>
+
+
 
 </body>
 </html>

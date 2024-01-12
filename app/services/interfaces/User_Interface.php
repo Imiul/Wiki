@@ -22,6 +22,7 @@
         public function countAdmins();
 
         public function getAuthors();
+        public function getAdmins();
     }
 
     ?>

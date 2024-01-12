@@ -250,6 +250,20 @@
             $Users = $stmt->fetchAll(PDO::FETCH_ASSOC);
             return $Users;
         }
+
+
+        /* Get Admins */
+        public function getAdmins()
+        {
+            $sql = "SELECT * FROM users WHERE role = :role";
+            $pdo = $this->db->connect();
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindValue(":role", "Admin");
+            $stmt->execute();
+
+            $Admins = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $Admins;
+        }
     }
 
     ?>

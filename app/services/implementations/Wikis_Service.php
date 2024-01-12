@@ -5,19 +5,35 @@
 
         private $db;
 
-        public function __construct($db)
+        public function __construct(Database $db)
         {   
             $this->db = $db;
         }
 
         
 
-        /* SHow All Categories */ 
+        /* SHow All Wikis */ 
         public function showWikis()
         {
             $sql = "
                 SELECT * 
                 FROM wikis 
+            ";
+            $pdo = $this->db->connect();
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute();
+
+            $wikisData = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $wikisData;
+        }
+
+        /* SHow Non ARCHIVED WIKIS Categories */ 
+        public function showNonArchivedWikis()
+        {
+            $sql = "
+                SELECT * 
+                FROM wikis 
+                WHERE archived IS NULL 
             ";
             $pdo = $this->db->connect();
             $stmt = $pdo->prepare($sql);
@@ -33,7 +49,8 @@
             $sql = "
                 SELECT * 
                 FROM wikis 
-                ORDER BY addDate ASC
+                WHERE archived IS NULL
+                ORDER BY addDate DESC
                 LIMIT :limit
             ";
             $pdo = $this->db->connect();
@@ -77,7 +94,6 @@
             return $wikisData;
         }
 
-
         /* DELETE WIKIS BY ID */
         public function deleteWikiById($id)
         {
@@ -88,7 +104,6 @@
             $stmt->bindParam(":id", $id);
             $stmt->execute();
         }
-
 
         /* Add Wiki */
         public function addWiki(Wiki $wiki)
@@ -120,7 +135,6 @@
             $stmt->execute();
         }
 
-
         public function countWikis()
         {
             $sql = "
@@ -135,6 +149,27 @@
             $CountWikis = $stmt->fetch(PDO::FETCH_ASSOC);
             return $CountWikis;
         }
+
+        /* archive wiki */
+        public function archiveWiki($id)
+        {
+            $date = date("Y-m-d H:i:s");
+
+            $sql = "
+                UPDATE wikis
+                SET archived = :date
+                WHERE wikiId = :id
+            ";
+
+            $pdo = $this->db->connect();
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindParam(":date", $date);
+            $stmt->bindParam(":id", $id);
+            $stmt->execute();
+
+        }
     }
+
+
 
     ?>
